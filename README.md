@@ -1,6 +1,6 @@
 # Legion-Guessr
 
-##About the game "Guess the Legion of Honor"
+## About the game "Guess the Legion of Honor"
 
 This game was created to guess whether various personalities, from all walks of life and around the world, have been awarded the French Legion of Honor.
 Above all, <b>it is a game designed for entertainment<b>, with no political or promotional intent.
