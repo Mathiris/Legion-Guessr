@@ -1,0 +1,218 @@
+body {
+    font-family: "Roboto", Arial, sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 15px;
+    background: #f4f4f9;
+    color: #333;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #444;
+    margin: 10px 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.image {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+img {
+    max-width: 500px; /* Taille modérée */
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+    position: relative;
+    max-width: 90%;
+    margin: 0 auto 15px;
+    text-align: center;
+    font-size: 1em; /* Taille lisible */
+    line-height: 1.5;
+    overflow: hidden;
+}
+
+.description .collapsed {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limite à 4 lignes visibles */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#toggle-description {
+    display: block;
+    margin: 10px auto;
+    padding: 8px 20px;
+    font-size: 0.9em;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#toggle-description:hover {
+    background-color: #2980b9;
+}
+
+.vote-section {
+    text-align: center;
+    margin: 15px 0;
+}
+
+#vote-yes, #vote-no {
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+#vote-yes {
+    background-color: #4caf50;
+    color: white;
+}
+
+#vote-no {
+    background-color: #f44336;
+    color: white;
+}
+
+#vote-yes:hover {
+    background-color: #45a049;
+}
+
+#vote-no:hover {
+    background-color: #e53935;
+}
+
+#vote-yes:disabled, #vote-no:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+#vote-result {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1em;
+}
+
+#streak {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 10px;
+    text-align: center;
+    color: #444;
+}
+
+@media (max-height: 800px), (max-width: 600px) {
+    img {
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    .description {
+        font-size: 0.9em;
+    }
+
+    #vote-yes, #vote-no {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+
+    
+}
+
+
+/* Conteneur des pop-ups (victoire et défaite) */
+#popup,
+#popup-defeat {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    overflow: hidden; /* Empêche les débordements */
+}
+
+/* Contenu des pop-ups */
+#popup-content,
+#popup-content-defeat {
+    max-width: 90%; /* S'adapte aux petits écrans */
+    width: 400px; /* Taille par défaut */
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: popup-appear 0.3s ease-out;
+}
+
+/* Animation légère d'apparition */
+@keyframes popup-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Texte des titres */
+#popup-content h2,
+#popup-content-defeat h2 {
+    margin-top: 0;
+}
+
+#popup-content h2 {
+    color: #4caf50; /* Vert pour la victoire */
+}
+
+#popup-content-defeat h2 {
+    color: #f44336; /* Rouge pour la défaite */
+}
+
+/* Boutons des pop-ups */
+#popup-content button,
+#popup-content-defeat button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#popup-content button:hover,
+#popup-content-defeat button:hover {
+    background-color: #2980b9;
+}
+
