@@ -1,8 +1,13 @@
 import csv
 import random
+import logging
 from flask import Flask, render_template
 
 app = Flask(__name__)
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+
 
 def load_personalities():
     """Charge toutes les personnalités depuis le fichier CSV."""
@@ -18,9 +23,11 @@ def get_random_person():
     """Renvoie une personnalité aléatoire qui n'a pas encore été devinée."""
     chosen_person = random.choice(all_personalities)
     all_personalities.remove(chosen_person)
+    app.logger.debug(f'{len(all_personalities)} remaining personalities')
     # Si toutes les personnalités ont été devinées, réinitialiser la liste
     if not all_personalities:
         all_personalities = load_personalities()
+        app.logger.info('Every personalities have been picked ! Relaoding all personalities !')
     return chosen_person
 
 @app.route('/')
